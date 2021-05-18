@@ -24,5 +24,4 @@ class RegistroForm(forms.ModelForm):
             ]
 
 class UserPass(UserCreationForm):
-
     pass

@@ -1,20 +1,12 @@
 
-body{
-    background: #ffe259;
-    background: linear-gradient(to right, #fba9577c, #ddc653ad);
-}
-/*
-    linear-gradient(to right, #ffa751, #ffe259);
-
-
-#logo{
-    color: black;
+body {
+    background: #eeede8;
+    background: linear-gradient(to right, #c2bdb87c, #f3f2efad);
+    margin: 0;
+    margin-bottom: 40px;
 }
 
-<<<<<<< HEAD
-*/
 
-/*margins*/
 
 nav{
     margin-bottom: 1rem;
