@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from .forms import RegistroForm,UserPass
+from .forms import RegistroForm,UserPass,AgregarProductoForm,AgregarEmpleadoForm
 
 
 # Create your views here.
@@ -45,3 +45,27 @@ def userPass(request):
         
            
     return render(request, 'registration/userPass.html', data)
+
+
+def agregarProducto(request):
+
+    data={
+        'form' : AgregarProductoForm()
+    }
+    return render(request,'app/producto/agregarProducto.html',data)
+
+def agregarEmpleado(request):
+
+    data={
+        'form' : AgregarEmpleadoForm()
+    }
+
+    if request.method == 'POST':
+        formulario = AgregarEmpleadoForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            return redirect(to="login")
+        data['form'] = formulario
+
+
+    return render(request,'app/empleado/agregarEmpleado.html',data)

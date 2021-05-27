@@ -1,5 +1,6 @@
 from django import forms
-from .models import Cliente
+from django.forms import fields
+from .models import Cliente, Producto,Empleado
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistroForm(forms.ModelForm):
@@ -26,3 +27,13 @@ class RegistroForm(forms.ModelForm):
 class UserPass(UserCreationForm):
 
     pass
+
+class AgregarProductoForm(forms.ModelForm):
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
+class AgregarEmpleadoForm(forms.ModelForm):
+    class Meta:
+        model = Empleado
+        fields = '__all__'

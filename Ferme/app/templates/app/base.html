@@ -25,39 +25,142 @@
 
     
     <nav class="navbar navbar-expand-md navbar-light col-12 col-md-12 sticky-top navColor">
-        <div class="container-fluid">
-            <a class="col-9 col-md-6 nav-link titleColor"  href=""><h1> Ferreteria FERME </h1></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="mr-auto"></div>
-                <div class="collapse navbar-collapse text-center col-3 col-md-6"  id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
-                        <li class="nav-item">
-                          <a class="nav-link active titleColor" href="{% url 'home' %}">Inicio</a>
-                        </li>
-                        
-                        {% if user.is_authenticated %}
-                          <li class="nav-item">
-                            <a class="nav-link titleColor" href="{% url 'logout' %}"> Cerrar Sesión</a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link titleColor" href="#"> @{{ user.username }}</a>
-                          </li>
-                        {% else %}
+      
+      <a class="col-9 col-md-1 nav-link titleColor d-flex-center"  href=""><img src="{% static 'app/imgs/logoRojo.png' %} " style="width: 100px;" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
 
-                        <li class="nav-item">
-                          <a class="nav-link titleColor" href="{% url 'registro' %}">Registrate</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link titleColor" href="{% url 'login' %}"> Iniciar Sesión</a>
-                          </li>
-                        {% endif %}
-                      </ul>
-                </div>
-            </div>
+      <div class=" row col-12 col-md-12">
+
+        <div class="collapse navbar-collapse text-center col-3 col-md-8 mb-2"  id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button" id="construccion" data-bs-toggle="dropdown"  aria-expanded="false">
+                CONSTRUCCIÓN
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="construccion">
+                <li><a class="dropdown-item" href="#">Aditivos</a></li>
+                <li><a class="dropdown-item" href="#">Molduras</a></li>
+                <li><a class="dropdown-item" href="#">Techumbre</a></li>
+                <li><a class="dropdown-item" href="#">Electricidad</a></li>
+              </ul>
+            </div> 
+            
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button" id="ferreteria" data-bs-toggle="dropdown" aria-expanded="false">
+                FERRETERIA
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="ferreteria">
+                <li><a class="dropdown-item" href="#">Alambres</a></li>
+                <li><a class="dropdown-item" href="#">Cañerias y Tubos</a></li>
+                <li><a class="dropdown-item" href="#">Gasfiteria y soldaduras</a></li>                      
+              </ul>
+            </div> 
+
+
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button"  id="herramienta" data-bs-toggle="dropdown"  aria-expanded="false">
+                HERRAMIENTAS
+              </button>
+            
+              <ul class="dropdown-menu" aria-labelledby="herramienta">
+                <li><a class="dropdown-item" href="#">Herramientas Construcción</a></li>
+                <li><a class="dropdown-item" href="#">Herramientas Electricidad</a></li>
+                <li><a class="dropdown-item" href="#">Herramientas Manuales</a></li>
+              </ul>
+            </div> 
+
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                MAQUINARIAS
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">                  
+                <li><a class="dropdown-item" href="#">Maquinas soldadoras</a></li>                  
+                <li><a class="dropdown-item" href="#">Generadores</a></li>                  
+                <li><a class="dropdown-item" href="#">Bombas</a></li>                  
+              </ul>                  
+            </div>  
+            
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                PINTURAS Y PISOS
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">                  
+                <li><a class="dropdown-item" href="#">Pinturas</a></li>                  
+                <li><a class="dropdown-item" href="#">Solventes</a></li>                  
+                <li><a class="dropdown-item" href="#">Revestimuentos</a></li>                  
+              </ul>                  
+            </div> 
+
+            <div class="dropdown">
+              <button class="btn btn-danger dropdown-toggle p-2 m-lg-2" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                HOGAR Y JARDIN
+              </button>
+
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">                  
+                <li><a class="dropdown-item" href="#">Hogar</a></li>                  
+                <li><a class="dropdown-item" href="#">Riego</a></li>                  
+                <li><a class="dropdown-item" href="#">Jardin</a></li>                  
+              </ul>                  
+            </div> 
+
+            {% if perms.app.add_empleado %}
+            
+              <div class="dropdown nav-item ">
+                <button class="btn btn-danger dropdown-toggle p-2 m-lg-2"  id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Empleado
+                </button>
+  
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">                  
+                  <li><a class="dropdown-item" href="agregarEmpleado">Agregar Empleado</a></li>                  
+                  <li><a class="dropdown-item" href="#">Eliminar-Editar Empleado</a></li>                  
+                                   
+                </ul>                  
+              </div> 
+            {% endif %}
+            
+           
+          </ul>
         </div>
-      </nav>
+        <div class="row col-12 col-md-4 d-block">
+          <ul class="navbar-nav navbar-right d-inline-flex">
+
+            <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+              <a class="nav-link  titleColor" href="{% url 'home' %}">INICIO</a>
+            </li>
+            {% if perms.app.add_producto %}
+            <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+              <a class="nav-link  titleColor" href="{% url 'agregarProducto' %}">Agregar Producto</a>
+            </li>
+            {% endif %}
+
+           
+            
+            {% if user.is_authenticated %}
+              <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+                <a class="nav-link titleColor" href="{% url 'logout' %}"> CERRAR SESION</a>
+              </li>
+              <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+                <a class="nav-link titleColor" href="#"> @{{ user.username }}</a>
+              </li>
+            {% else %}
+
+            <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+              <a class="nav-link titleColor" href="{% url 'registro' %}">REGISTRO</a>
+            </li>
+            <li class="nav-item col-4 col-md-1 p-3 m-lg-3">
+                <a class="nav-link titleColor" href="{% url 'login' %}"> INICIAR SESIÓN</a>
+              </li>
+            {% endif %}
+            
+          </ul>
+
+        </div>
+      </div>  
+</nav>
     
     <div id= "contenido">
 
