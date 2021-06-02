@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import fields
-from .models import Cliente, Producto,Empleado
+from .models import Cliente, Producto,OrdenesCompra
 from django.contrib.auth.forms import UserCreationForm
 
 class RegistroForm(forms.ModelForm):
@@ -26,13 +26,26 @@ class RegistroForm(forms.ModelForm):
 
 class UserPass(UserCreationForm):
     pass
+        
 
 class AgregarProductoForm(forms.ModelForm):
     class Meta:
         model = Producto
+        fields = [
+            'descripcion',
+            'fecha_vencimiento',
+            'stock',
+            'stock_critico',
+            'precio',
+            'foto',
+            'cod_proveedor',
+            'cod_familia',
+            'cod_tipo_producto'
+        ]
+
+class AgregarOrdenCompra(forms.ModelForm):
+    class Meta:
+        model = OrdenesCompra
         fields = '__all__'
 
-class AgregarEmpleadoForm(forms.ModelForm):
-    class Meta:
-        model = Empleado
-        fields = '__all__'
+

@@ -1,0 +1,62 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">CLIENTES</h2>
+           <table class="table table-striped">
+               <tr>
+                    <th>Rut</th>
+                    <th>Nombres</th>
+                
+                    <th>Apellidos</th>
+                    
+                    <th>Celular</th>
+                    <th>Email</th>
+                    <th>Direccion</th>
+                    <th>Comuna</th>
+                    <th>Opciones</th>
+                </tr>
+               {% for c in clientes %}
+
+               <tr>
+                   <td>{{ c.run_cliente | title }} {{ c.dvrun | title}}</td>
+                   <td>{{ c.pnombre | title }} {{ c.snombre | title}}</td>
+                   <td>{{ c.appaterno | title }} {{ c.apmaterno | title}}</td>
+                   <td>{{ c.celular | title }}</td>
+                   <td>{{ c.correo | title }}</td>
+                   <td>{{ c.direccion | title }}</td>
+                   <td>{{ c.id_comuna | title }}</td>
+                   <td>
+                       <a href="{% url 'modificarCliente' c.run_cliente %}" class="btn btn-info btn-sm">Editar</a>
+                        {% if user.is_superuser %}
+                            <h6></h6>
+                            <a href="{% url 'eliminarCliente' c.run_cliente %}"class="btn btn-danger btn-sm">Eliminar</a>
+                        {% endif %}
+                    
+                   </td>
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

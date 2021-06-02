@@ -1,0 +1,50 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">Usuarios</h2>
+           <table class="table table-striped">
+               <tr>
+                    <th>Nombre Usuarios</th>
+                    
+                    <th>Opciones</th>
+                </tr>
+               {% for u in usuarios %}
+                    {% if u.is_staff == 0 %}
+                        <tr>
+                            <td>{{ u.username | title }}</td>
+                            
+                            <td>
+                                    {% if user.is_superuser %}
+                                        <h6></h6>
+                                        <a href="{% url 'eliminarUser' u.username %}"class="btn btn-danger btn-sm">Eliminar</a>
+                                    {% endif %}
+                                
+                            </td>
+
+                        </tr>
+                    {% endif %}
+               {% endfor %}
+           </table>
+           
+        </div>
+
+        
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

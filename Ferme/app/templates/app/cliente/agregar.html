@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+
+{% load static %}
+
+
+{% block js %}
+<script src="{% static 'app/js/js.js' %}"></script>
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+
+<div class="container w-100 w-md-50 w-lg-50 bg-grey mt-5 rounded shadow mb-4">
+    <div class="row align-items-stretch">
+        <br>
+        <br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class=" col-4">
+                    <label for=""></label>
+                </div>
+                <div class="text-center col-4">
+                    <input type="text" class="form-control" placeholder="Ingrese Rut">
+                </div>
+                <div class=" col-4">
+                        <input type="submit"  class="btn btn-secondary" value="Buscar">
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        
+        
+        <div class="col bg-white p-5 rounded-end">
+
+            <h2 class="fw-bold text-center py-5">Ingresa tus datos</h2>
+            <form action="#" method="post">
+
+                {% csrf_token %}
+
+                {{ form | crispy }}
+          
+                
+                
+                <br>
+                <div class="d-grid">
+             
+                    <input type="submit"  class="btn btn-warning" value="Guardar Datos">
+                </div>
+                
+            </form>
+          
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

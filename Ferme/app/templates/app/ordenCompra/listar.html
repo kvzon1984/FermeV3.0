@@ -1,0 +1,53 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">ORDENES DE COMPRAS</h2>
+           <table class="table table-striped">
+               <tr>
+                    <th>N Orden Compra</th>
+                    <th>Cod Proveedor</th>
+                    <th>Rut Empleado</th>
+                    <th>Estado</th>
+                    <th>Fecha Emision</th>
+                    <th>Fecha Recepcion</th>
+                    <th>Opciones</th>
+                </tr>
+               {% for e in form %}
+
+               <tr>
+                   <td>{{ e.numorden | title }}</td>
+                   <td>{{ e.cod_proveedor | title }}</td>
+                   <td>{{ e.run_empleado | title }}</td>
+                   <td>{{ e.estado | title }}</td>
+                   <td>{{ e.fecha_emision | title }}</td>
+                   <td>{{ e.fecha_recepcion | title }}</td>
+                   <td>
+                       <a href="{% url 'modificarOrdenCompra' e.numorden %}" class="btn btn-info btn-sm">Editar</a>
+                    <h6></h6>
+                       <a href="{% url 'eliminarOrdenCompra' e.numorden %}"class="btn btn-danger btn-sm">Eliminar</a>
+                   </td>
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

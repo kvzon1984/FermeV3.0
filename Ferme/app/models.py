@@ -306,8 +306,8 @@ class Producto(models.Model):
     stock = models.IntegerField()
     stock_critico = models.IntegerField()
     precio = models.IntegerField(blank=True, null=True)
-    foto = models.BinaryField(blank=True, null=True)
-    cod_proveedor = models.IntegerField()
+    foto = models.ImageField(upload_to= "productos", null=True)
+    cod_proveedor = models.ForeignKey('Proveedor', models.DO_NOTHING,db_column = 'cod_proveedor')
     cod_familia = models.ForeignKey(FamiliaProducto, models.DO_NOTHING, db_column='cod_familia')
     cod_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='cod_tipo_producto')
 

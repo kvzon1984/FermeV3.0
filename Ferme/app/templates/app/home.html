@@ -8,6 +8,8 @@
 
 {% block contenido %}
 
+{% load humanize %} 
+
 
 
 <!-- slider -->
@@ -80,153 +82,28 @@
 		</div>
 		<br>
 		<div class="card-group mt-6 ">
-			<div class="card-body d-flex-center">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/pino_bruto.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> PINO BRUTO 2x4</span><br>
-							<br>
-							<label>$ 5.990</label><br><br>
+			{% for p in productos %}
+				<div class="card-body d-flex-center">
+					<div class="card border-dark" style="width: 15rem">
+						{% if p.foto %}
+							<img src="{{ p.foto.url }}" class="card-img-top" alt="..." />
+						{% endif %}
+						<div class="card-body container-fluid">
+							<div class="text-center">
+								<span><i class="fas fa-caret-right"></i> {{ p.descripcion | capfirst }}</span><br>
+								<br>
+								<label>${{ p.precio | intcomma }}</label><br><br>
 
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
+								<button class="btn btn-success">agregar al carro</button>
+								<br>
+								<br>
+								<button class="btn btn-dark">Seleccionar</button>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/maletin_brocas.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> MALETIN HERRAMIENTAS VARIAS </span><br>
-							<br>
-							<label>$ 25.990</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/panel_estructural.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> OSB ESTRUCTURAL 122x244x9.5mm</span><br>
-							<br>
-							
-							<label>$ 18.190</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/Disco_corte.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> DISCO CORTE FE 4 1/2</span><br>
-							<br>
-							
-							<label>$ 1.010</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-group mt-3">
-			<div class="card-body">
-				<div class="card border-dark " style="width: 15rem">
-					<img src="{% static 'app/imgs/Aislapol.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> AISLAPOL 244x125x2.5mm</span><br>
-							<br>
-							
-							<label>$ 5.990</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 			
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/Esmalte_sintetico.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> ESMALTE SINTETICO NEGRO GALON SOQUINA</span><br>
-							<br>
-							
-							<label>$ 16.390</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/generador.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i>GENERADOR MONO GS850D 6.5KVA DIESEL - KOLVOK</span><br>
-							<br>
-							<label>$ 1.489.650</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/soldaduras.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> SOLDADURA ARCO LINCOLN 6011 1/18</span><br>
-							<br>
-							<label>$ 2.700</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>	
 </section>
 
