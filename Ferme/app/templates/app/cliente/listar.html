@@ -14,35 +14,39 @@
     
         <div class="col-12 col-md-12  bg-white p-5 rounded-end">
             <h2 class="fw-bold text-center py-5">CLIENTES</h2>
-           <table class="table table-striped">
-               <tr>
-                    <th>Rut</th>
-                    <th>Nombres</th>
+           <table class="table table-responsive table-bordered table-hover cell-border">
+               <tr class="table-danger">
+                    <th class="text-center aliniarElements">Rut</th>
+                    <th class="text-center aliniarElements">Nombres</th>
                 
-                    <th>Apellidos</th>
+                    <th class="text-center aliniarElements">Apellidos</th>
                     
-                    <th>Celular</th>
-                    <th>Email</th>
-                    <th>Direccion</th>
-                    <th>Comuna</th>
-                    <th>Opciones</th>
+                    <th class="text-center aliniarElements">Celular</th>
+                    <th class="text-center aliniarElements">Email</th>
+                    <th class="text-center aliniarElements">Direccion</th>
+                    <th class="text-center aliniarElements">Comuna</th>
+                    <th class="text-center aliniarElements">Opciones</th>
                 </tr>
                {% for c in clientes %}
 
                <tr>
-                   <td>{{ c.run_cliente | title }} {{ c.dvrun | title}}</td>
-                   <td>{{ c.pnombre | title }} {{ c.snombre | title}}</td>
-                   <td>{{ c.appaterno | title }} {{ c.apmaterno | title}}</td>
-                   <td>{{ c.celular | title }}</td>
-                   <td>{{ c.correo | title }}</td>
-                   <td>{{ c.direccion | title }}</td>
-                   <td>{{ c.id_comuna | title }}</td>
-                   <td>
-                       <a href="{% url 'modificarCliente' c.run_cliente %}" class="btn btn-info btn-sm">Editar</a>
-                        {% if user.is_superuser %}
-                            <h6></h6>
-                            <a href="{% url 'eliminarCliente' c.run_cliente %}"class="btn btn-danger btn-sm">Eliminar</a>
-                        {% endif %}
+                   <td class="text-center aliniarElements">{{ c.run_cliente | title }} {{ c.dvrun | title}}</td>
+                   <td class="text-center aliniarElements">{{ c.pnombre | title }} {{ c.snombre | title}}</td>
+                   <td class="text-center aliniarElements">{{ c.appaterno | title }} {{ c.apmaterno | title}}</td>
+                   <td class="text-center aliniarElements">{{ c.celular | title }}</td>
+                   <td class="text-center aliniarElements">{{ c.correo | title }}</td>
+                   <td class="text-center aliniarElements">{{ c.direccion | title }}</td>
+                   <td class="text-center aliniarElements">{{ c.id_comuna | title }}</td>
+                   <td class="text-center aliniarElements">
+
+                    <div>
+
+                        <a href="{% url 'modificarCliente' c.run_cliente %}"  class="btn btn-info btn-sm">Editar</a>
+                         {% if user.is_superuser %}
+                         &nbsp;
+                        <a href="{% url 'eliminarCliente' c.run_cliente %}"  class="btn btn-danger btn-sm">Eliminar</a>
+                         {% endif %}
+                    </div>
                     
                    </td>
 

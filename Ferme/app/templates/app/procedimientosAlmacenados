@@ -54,3 +54,90 @@ BEGIN
 
 END PA_GUARDAR_PRODUCTO;
 
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+CREATE OR REPLACE PROCEDURE PA_INSERTAR_PROVEEDOR(V_RUN_PRO PROVEEDOR.RUN_PROVEEDOR%TYPE,
+
+              V_NOMBRE_PRO PROVEEDOR.NOM_PROVEEDOR%TYPE, V_CELULAR PROVEEDOR.CELULAR_PROVEEDOR%TYPE,
+
+              V_SALIDA OUT NUMBER)
+
+IS
+
+BEGIN
+
+  INSERT INTO PROVEEDOR
+
+    VALUES(seq_prov.NEXTVAL, V_RUN_PRO, V_NOMBRE_PRO, V_CELULAR);
+
+    V_SALIDA := 1;
+
+  COMMIT;
+
+  EXCEPTION
+
+    WHEN OTHERS THEN
+
+      V_SALIDA :=0;
+
+END PA_INSERTAR_PROVEEDOR;
+
+
+
+---------------------------------------------------------------------------------
+
+
+
+CREATE OR REPLACE PROCEDURE PA_INSERTAR_OC( V_COD_PRO ORDENES_COMPRA.COD_PROVEEDOR%TYPE,
+                                            V_RUN_EMP ORDENES_COMPRA.RUN_EMPLEADO%TYPE,
+                                            V_ESTADO ORDENES_COMPRA.ESTADO%TYPE,
+                                            V_FECHA_EMI ORDENES_COMPRA.FECHA_EMISION%TYPE,
+                                            V_FECHA_REC ORDENES_COMPRA.FECHA_RECEPCION%TYPE,
+                                            V_SALIDA OUT NUMBER)
+IS
+BEGIN
+    INSERT INTO ORDENES_COMPRA
+        VALUES(seq_ord_com.NEXTVAL, V_COD_PRO, V_RUN_EMP, V_ESTADO, V_FECHA_EMI, V_FECHA_REC);
+        V_SALIDA:=1;
+        COMMIT;
+        EXCEPTION
+            WHEN OTHERS THEN
+                V_SALIDA:=0;
+END PA_INSERTAR_OC;
+
+
+-------------------------------------------------------------------
+
+
+CREATE OR REPLACE PROCEDURE PA_INSERTAR_FAMILIA_PRO(V_DESCRIPCION FAMILIA_PRODUCTO.DESCRIPCION%TYPE,
+                                                    V_SALIDA OUT NUMBER)
+IS
+BEGIN
+    INSERT INTO FAMILIA_PRODUCTO
+        VALUES(seq_familia_producto.NEXTVAL, V_DESCRIPCION);
+    V_SALIDA:=1;
+    
+    EXCEPTION
+        WHEN OTHERS THEN
+            V_SALIDA := 0;
+END PA_INSERTAR_FAMILIA_PRO;
+
+
+
+--------------------------------------------------------------------------
+
+
+CREATE OR REPLACE PROCEDURE PA_INSERTAR_TIPO_PRO(V_DESCRIPCION FAMILIA_PRODUCTO.DESCRIPCION%TYPE,
+                                                    V_SALIDA OUT NUMBER)
+IS
+BEGIN
+    INSERT INTO TIPO_PRODUCTO
+        VALUES(seq_tipo_producto.NEXTVAL, V_DESCRIPCION);
+    V_SALIDA:=1;
+    
+    EXCEPTION
+        WHEN OTHERS THEN
+            V_SALIDA := 0;
+END PA_INSERTAR_TIPO_PRO;

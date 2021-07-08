@@ -1,0 +1,48 @@
+<table class="table table-botdered" style="color : black">
+    <thead>
+        <tr>
+            <th class="text-center col-3 col-md-8 mb-2">
+                Tus Compras
+            </th>
+        </tr>
+        <tr>
+            <th>Productos</th>
+            <th>Cantidad</th>
+            <th>Sub Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
+                <tr class="text-center">
+                    <td>{{ value.nombre }}</td>
+                    <td>{{ value.cantidad }}</td>
+                    <td>
+
+                        <a href="{% url 'carro:agregar_producto_carro' value.id %}" class="btn btn-sm btn-success">+</a>
+                        <a href="{% url 'carro:eliminar_producto_carro' value.id %}" class="btn btn-sm btn-success">-</a><br/>
+
+                        {{ value.precio}} $
+
+                    </td>
+                </tr>
+
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>
+                    <div class="alert alert-danger text-center col-3 col-md-8 mb-2">
+                        Sin Productos
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>
+                TOTAL: {{ importe_total_carro}} $
+            </td>
+        </tr>
+    </tfoot>
+</table>

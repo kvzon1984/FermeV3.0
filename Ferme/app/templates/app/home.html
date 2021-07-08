@@ -1,9 +1,9 @@
 {% extends 'app/base.html' %} 
 {% load static %} 
 {% block foto-home %}
-<div class="ratio d-none d-md-block" style="--bs-aspect-ratio: 26%">
+<!-- <div class="ratio d-none d-md-block" style="--bs-aspect-ratio: 26%">
 	<img class="col-12-sm" src="{% static 'app/imgs/foto-home.jpg'%}" alt="" style="height: 500px;"/>
-</div>
+</div> -->
 {% endblock %}
 
 {% block contenido %}
@@ -14,7 +14,7 @@
 
 <!-- slider -->
 <div id="carouselExampleIndicators" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-	<div class="carousel-indicators">
+	<div class="carousel-indicators"></div>
 	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
 	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
 	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -76,6 +76,12 @@
 <!-- content -->
 <section id="contenido ">
 
+	<div>
+		
+
+		{% include "./Carrito/viewCarritoAdd.html" %}
+	</div>
+
 		<br><br>
 		<div class="title text-center">
 			<h1>Productos</h1>
@@ -92,12 +98,15 @@
 							<div class="text-center">
 								<span><i class="fas fa-caret-right"></i> {{ p.descripcion | capfirst }}</span><br>
 								<br>
-								<label>${{ p.precio | intcomma }}</label><br><br>
+								<label class="text-danger"><h3>${{ p.precio | intcomma }}</h3></label><br><br>
 
-								<button class="btn btn-success">agregar al carro</button>
+								<div class="d-grid">
+									<a href="{% url 'carro:agregar_producto_carro' p.cod_producto %}" class="btn btn-warning">Agregar al carro</a>
+									
+								</div>
+								<!-- <br>
 								<br>
-								<br>
-								<button class="btn btn-dark">Seleccionar</button>
+								<button class="btn btn-dark">Seleccionar</button> -->
 							</div>
 						</div>
 					</div>

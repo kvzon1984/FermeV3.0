@@ -5,6 +5,7 @@
 #   * Make sure each ForeignKey and OneToOneField has `on_delete` set to the desired behavior
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
+
 from django.db import models
 
 
@@ -155,6 +156,9 @@ class Comuna(models.Model):
     id_comuna = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.descripcion
+
     class Meta:
         managed = False
         db_table = 'comuna'
@@ -162,7 +166,7 @@ class Comuna(models.Model):
 
 class Despacho(models.Model):
     id_despacho = models.IntegerField(primary_key=True)
-    fecha_despacho = models.DateField(blank=True, null=True)
+    fecha_despacho = models.DateField()
     recibido_por = models.CharField(max_length=255)
     direccion_despacho = models.CharField(max_length=255)
     celular = models.CharField(max_length=12)
@@ -258,6 +262,11 @@ class Empleado(models.Model):
         managed = False
         db_table = 'empleado'
 
+    def __str__(self):
+
+        strRut = str(self.run_emp)
+
+        return strRut
 
 class EstadoDespacho(models.Model):
     id_estado_des = models.IntegerField(primary_key=True)
@@ -281,39 +290,59 @@ class FamiliaProducto(models.Model):
     cod_familia = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.descripcion
+
     class Meta:
         managed = False
         db_table = 'familia_producto'
 
+##agregar choices 
+opciones_estado_orden_compra = [
+    (0,"Seleccione un estado"),
+    (10,"Emitida"),
+    (20,"Aceptada"),
+    (30,"Anulada")
+]
+
+## FIN choices
 
 class OrdenesCompra(models.Model):
     numorden = models.IntegerField(primary_key=True)
     cod_proveedor = models.ForeignKey('Proveedor', models.DO_NOTHING, db_column='cod_proveedor')
     run_empleado = models.ForeignKey(Empleado, models.DO_NOTHING, db_column='run_empleado')
-    estado = models.CharField(max_length=10)
+    estado = models.IntegerField(choices=opciones_estado_orden_compra,default=0)
     fecha_emision = models.DateField()
     fecha_recepcion = models.DateField(blank=True, null=True)
+
 
     class Meta:
         managed = False
         db_table = 'ordenes_compra'
 
 
+
+
+
 class Producto(models.Model):
-    cod_producto = models.BigIntegerField(primary_key=True)
+    cod_producto = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=255)
-    fecha_vencimiento = models.DateField(blank=True, null=True)
+    fecha_vencimiento = models.DateField(null=True,blank=True)
     stock = models.IntegerField()
     stock_critico = models.IntegerField()
     precio = models.IntegerField(blank=True, null=True)
     foto = models.ImageField(upload_to= "productos", null=True)
-    cod_proveedor = models.ForeignKey('Proveedor', models.DO_NOTHING,db_column = 'cod_proveedor')
-    cod_familia = models.ForeignKey(FamiliaProducto, models.DO_NOTHING, db_column='cod_familia')
-    cod_tipo_producto = models.ForeignKey('TipoProducto', models.DO_NOTHING, db_column='cod_tipo_producto')
+    cod_proveedor = models.ForeignKey('Proveedor',db_column = 'cod_proveedor',on_delete=models.CASCADE)
+    cod_familia = models.ForeignKey(FamiliaProducto, db_column='cod_familia',on_delete=models.CASCADE)
+    cod_tipo_producto = models.ForeignKey('TipoProducto', db_column='cod_tipo_producto',on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.descripcion
 
     class Meta:
         managed = False
         db_table = 'producto'
+        
 
 
 class Proveedor(models.Model):
@@ -321,6 +350,9 @@ class Proveedor(models.Model):
     run_proveedor = models.CharField(max_length=10)
     nom_proveedor = models.CharField(max_length=255)
     celular_proveedor = models.CharField(max_length=12)
+
+    def __str__(self):
+        return self.nom_proveedor
 
     class Meta:
         managed = False
@@ -330,6 +362,9 @@ class Proveedor(models.Model):
 class TipoCliente(models.Model):
     cod_tipo_cliente = models.IntegerField(primary_key=True)
     nombre_tipo_cliente = models.CharField(max_length=7)
+
+    def __str__(self):
+        return self.nombre_tipo_cliente
 
     class Meta:
         managed = False
@@ -349,16 +384,25 @@ class TipoProducto(models.Model):
     cod_tipo_producto = models.IntegerField(primary_key=True)
     descripcion = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.descripcion
+
     class Meta:
         managed = False
         db_table = 'tipo_producto'
 
 
 class TrazabilidadOc(models.Model):
+
     id_trazabilidad_oc = models.IntegerField(primary_key=True)
     numorden = models.ForeignKey(OrdenesCompra, models.DO_NOTHING, db_column='numorden')
     fecha = models.DateField()
     id_estado_orden = models.ForeignKey(EstadoOrdenCompra, models.DO_NOTHING, db_column='id_estado_orden', blank=True, null=True)
+
+    def __str__(self):
+
+        strOrden = str(self.id_trazabilidad_oc)
+        return strOrden
 
     class Meta:
         managed = False

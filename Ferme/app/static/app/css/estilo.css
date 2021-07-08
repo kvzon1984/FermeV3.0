@@ -6,6 +6,11 @@ body {
     margin-bottom: 40px;
 }
 
+/* Esto alineara los textos dentro de cualquier formulario tanto vertical*/
+
+.aliniarElements{
+vertical-align: center;
+}
 
 
 nav{
@@ -23,12 +28,11 @@ nav{
     display: none;
 }
 
-
 .bg{
-    background-image: url(../imgs/img-inicio-sesion.jpg );
-    background-repeat: unset;
-    background-position: center center;
+
+    height: 100vh;
 }
+
   
 #contenido{
     height: auto;
