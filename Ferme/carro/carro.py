@@ -1,31 +1,36 @@
 
 class Carro:
     def __init__(self, request):
-        print(str(request))
         self.request = request
         self.session=request.session
         carro = self.session.get("carro")
-        print(str(carro))
+        
         if not carro:
             carro = self.session["carro"]={}
-        
+
         self.carro = carro
            
 
     def agregar(self , producto):
         if (str(producto.cod_producto) not in self.carro.keys()):
-            print(str(producto.cod_producto))
             self.carro[producto.cod_producto]={
                 "id" : producto.cod_producto,
                 "nombre": producto.descripcion,
                 "cantidad": 1,
                 "precio": producto.precio
+
             }
+            
         else:
+            
             for key , value in self.carro.items():
+              
                 if key == str(producto.cod_producto):
+                    print('Agrege un producto')
                     value["cantidad"]=value["cantidad"]+1
+                    value["precio"]= value["precio"] * value["cantidad"]
                     break
+            
         self.guardar_carro()
 
 
@@ -41,11 +46,13 @@ class Carro:
 
     def restar_productos(self, producto):
         for key , value in self.carro.items():
-                if key == str(producto.cod_producto):
-                    value["cantidad"]=value["cantidad"]-1
-                    if value["cantidad"]<1:
-                        self.eliminar(producto)
-                    break
+            if key == str(producto.cod_producto):
+                value["cantidad"]=value["cantidad"]-1
+                value["precio"]= value["precio"] - producto.precio
+                if value["cantidad"]<1:
+                    self.eliminar(producto)
+                    
+                break
         self.guardar_carro()
 
     def limpiar_carro(self):

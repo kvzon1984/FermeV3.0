@@ -22,6 +22,15 @@ def home(request):
 
     return render(request, 'app/home.html',data)
 
+def carroPrueba(request):
+
+    
+
+    return render(request, 'app/Carrito/variableCarro.html' )
+
+
+
+
 
 def registro(request):
     

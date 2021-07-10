@@ -7,7 +7,7 @@ from django.urls.conf import include
 from .views import home,registro,userPass, agregarProducto,eliminar_Producto,listar_producto,modificar_Producto,agregar_Orden_Compra
 from .views import listar_OrdenCompra,modificar_OrdenCompra,eliminar_ordenCompra,listar_Cliente, agregar_cliente,userPass2,modificar_Cliente
 from .views import eliminar_Cliente,listar_user,eliminar_User,listar_TrazabilidadOC,agregar_Proveedor,listar_Proveedor,eliminar_Proveedor
-from .views import modificar_Proveedor,agregarTipoProducto,agregarFamiliaProducto
+from .views import modificar_Proveedor,agregarTipoProducto,agregarFamiliaProducto,carroPrueba
  
 
 urlpatterns = [
@@ -37,6 +37,13 @@ urlpatterns = [
     path('eliminar_Proveedor/<id>/', eliminar_Proveedor ,name='eliminarProveedor'),
     path('agregarTipoTpoducto/', agregarTipoProducto, name='agregarTipoProducto'),
     path('agregarFamiliaTpoducto/', agregarFamiliaProducto, name='agregarFamiliaProducto'),
-    path('carro/', include('carro.urls')),
+    path('carroPrueba/', carroPrueba, name='carroPrueba'),
+    
+    
+
+  
+  
+
+    
     
 ]
