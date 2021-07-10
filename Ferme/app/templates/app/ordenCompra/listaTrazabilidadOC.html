@@ -1,0 +1,44 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">Trazabilidad Orden Compra</h2>
+           <table class="table table-responsive table-bordered table-hover cell-border">
+               <tr class="table-danger">
+                    <th class="text-center aliniarElements">N Compra</th>
+                    <th class="text-center aliniarElements">Fecha Movimiento</th>
+                    <th class="text-center aliniarElements">Estado</th>
+                  
+                </tr>
+               {% for result in listar_TrazabilidadOC %}
+
+               <tr>
+                   <td class="text-center aliniarElements" >{{ result.numorden}}</td>
+                   <td class="text-center aliniarElements">{{ result.fecha | title }}</td>
+                   <td class="text-center aliniarElements">{{ result.id_estado_orden | title }}</td>
+                
+                   
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

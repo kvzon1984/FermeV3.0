@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">PRODUCTOS</h2>
+           <table class="table table-responsive table-bordered table-hover cell-border">
+               <tr class="table-danger">
+                    <th class="aliniarElements text-center">Codigo</th>
+                    <th class="aliniarElements text-center">Nombre</th>
+                    <th class="aliniarElements text-center">Fecha Vencimiento</th>
+                    <th class="aliniarElements text-center">Stock</th>
+                    <th class="aliniarElements text-center">Stock Critico</th>
+                    <th class="aliniarElements text-center">Precio</th>
+                    <th class="aliniarElements text-center">Proveedor</th>
+                    <th class="aliniarElements text-center">Familia de Producto</th>
+                    <th class="aliniarElements text-center">Tipo Producto</th>
+                    <th class="aliniarElements text-center">Accion</th>
+                </tr>
+               {% for e in form %}
+
+               <tr>
+                   <td class="aliniarElements text-center">{{ e.cod_producto | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.descripcion | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.fecha_vencimiento | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.stock | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.stock_critico | title }}</td>
+                   <td class="aliniarElements text-center">${{ e.precio | intcomma }}</td>
+                   <td class="aliniarElements text-center">{{ e.cod_proveedor | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.cod_familia | title }}</td>
+                   <td class="aliniarElements text-center">{{ e.cod_tipo_producto | title }}</td>
+                   <td class="aliniarElements text-center">
+                    <div >
+                        <a href="{% url 'modificarProducto' e.cod_producto %}"  class="btn btn-info btn-sm">Editar</a>
+                        
+                        <h6></h6>
+                        <a href="{% url 'eliminarProducto' e.cod_producto %}"class="btn btn-danger btn-sm">Eliminar</a>
+
+                    </div>
+                   </td>
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

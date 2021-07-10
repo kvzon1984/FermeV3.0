@@ -1,0 +1,63 @@
+{% extends 'app/base.html' %}
+
+
+
+
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">ORDENES DE COMPRAS</h2>
+           <table class="table table-responsive table-bordered table-hover cell-border">
+               <tr class="table-danger">
+                    <th class="text-center aliniarElements" >Nº Orden Compra</th>
+                    <th class="text-center aliniarElements" >Cod Proveedor</th>
+                    <th class="text-center aliniarElements" >Rut Empleado</th>
+                    <th class="text-center aliniarElements" >Estado</th>
+                    <th class="text-center aliniarElements" >Fecha Emision</th>
+                    <th class="text-center aliniarElements" >Fecha Recepcion</th>
+                    <th class="text-center aliniarElements" >Opciones</th>
+                </tr>
+               {% for e in form %}
+
+               <tr>
+                   <td class="text-center aliniarElements" >{{ e.numorden | title }}</td>
+                   <td class="text-center aliniarElements" >{{ e.cod_proveedor | title }}</td>
+                   <td class="text-center aliniarElements" >{{ e.run_empleado | title }}</td>
+                   <td class="text-center aliniarElements" >{{ e.estado | title }}</td>
+                   <td class="text-center aliniarElements" >{{ e.fecha_emision | title }}</td>
+                   <td class="text-center aliniarElements" >{{ e.fecha_recepcion | title }}</td>
+                   <td class="text-center aliniarElements" >
+
+                    <div class="text-center" >
+                        <a href="{% url 'modificarOrdenCompra' e.numorden %}"  class="btn btn-info btn-sm">Editar</a>
+                        <!-- &nbsp;
+                        <a href="{% url 'eliminarOrdenCompra' e.numorden %}"  class="btn btn-danger btn-sm">Eliminar</a> -->
+
+                    </div>
+                   </td>
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+    </div>
+</div>
+
+
+
+ {% endblock %}
+

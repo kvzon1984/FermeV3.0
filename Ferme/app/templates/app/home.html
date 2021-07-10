@@ -1,61 +1,63 @@
 {% extends 'app/base.html' %} 
 {% load static %} 
 {% block foto-home %}
-<div class="ratio d-none d-md-block" style="--bs-aspect-ratio: 26%">
+<!-- <div class="ratio d-none d-md-block" style="--bs-aspect-ratio: 26%">
 	<img class="col-12-sm" src="{% static 'app/imgs/foto-home.jpg'%}" alt="" style="height: 500px;"/>
-</div>
+</div> -->
 {% endblock %}
 
 {% block contenido %}
 
+{% load humanize %} 
 
 
-<!-- slider -->
-<div id="carouselExampleIndicators" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
-	<div class="carousel-indicators">
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-	  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-	  
-	</div>
-	<div class="carousel-inner">
-	  <div class="carousel-item active">
-		<img  src="{% static 'app/imgs/slyder1.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	  <div class="carousel-item">
-		<img  src="{% static 'app/imgs/slyder2.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	  <div class="carousel-item">
-		<img  src="{% static 'app/imgs/slyder3.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	  <div class="carousel-item">
-		<img  src="{% static 'app/imgs/slyder4.png'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	  <div class="carousel-item">
-		<img  src="{% static 'app/imgs/slyder5.png'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	  <div class="carousel-item">
-		<img  src="{% static 'app/imgs/slyder6.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
-	  </div>
-	</div>
-	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Previous</span>
-	</button>
-	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	  <span class="visually-hidden">Next</span>
-	</button>
-  </div>
-  <br>
-
-  <!-- Search-->
 <div class="container-fluid">
+	<!-- slider -->
+	<div id="carouselExampleIndicators" class="carousel slide d-none d-md-block" data-bs-ride="carousel">
+		<div class="carousel-indicators"></div>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+		<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+		
+		</div>
+		<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img  src="{% static 'app/imgs/slyder1.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img  src="{% static 'app/imgs/slyder2.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img  src="{% static 'app/imgs/slyder3.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img  src="{% static 'app/imgs/slyder4.png'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img  src="{% static 'app/imgs/slyder5.png'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		<div class="carousel-item">
+			<img  src="{% static 'app/imgs/slyder6.jpg'%}" class="d-block col-md-10 offset-1" alt="...">
+		</div>
+		</div>
+		<!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+		<span class="visually-hidden">Next</span>
+		</button> -->
+	</div>
+	<br>
+</div>
+  <!-- Search-->
+<div class="container-fluid col-12">
 	<div class="row">
-		<div class=" col-4">
+		<div class=" col-3">
 			<label for=""></label>
 		</div>
 		<div class="text-center col-4">
@@ -63,6 +65,10 @@
 		</div>
 		<div class=" col-4">
 				<button class="btn btn-secondary">Buscar</button>
+		</div>
+		<div class="col-1">
+			<a href="{% url 'carroPrueba' %}" class="btn btn-warning"><img src="{% static 'app/imgs/carro.png'%}" style="size: 10;" alt=""></a>
+			
 		</div>
 	</div>
 </div>	
@@ -74,163 +80,45 @@
 <!-- content -->
 <section id="contenido ">
 
+	<div>
+		
+
+		
+	</div>
+
 		<br><br>
 		<div class="title text-center">
 			<h1>Productos</h1>
 		</div>
 		<br>
 		<div class="card-group mt-6 ">
-			<div class="card-body d-flex-center">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/pino_bruto.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> PINO BRUTO 2x4</span><br>
-							<br>
-							<label>$ 5.990</label><br><br>
+			{% for p in productos %}
+				<div class="card-body d-flex-center">
+					<div class="card border-dark" style="width: 15rem">
+						{% if p.foto %}
+							<img src="{{ p.foto.url }}" class="card-img-top" alt="..." />
+						{% endif %}
+						<div class="card-body container-fluid">
+							<div class="text-center">
+								<span><i class="fas fa-caret-right"></i> {{ p.descripcion | capfirst }}</span><br>
+								<br>
+								<label class="text-danger"><h3>${{ p.precio | intcomma }}</h3></label><br><br>
 
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
+								<div class="d-grid">
+									<a href="{% url 'carro:agregar_producto_carro' p.cod_producto %}" class="btn btn-warning">Agregar al carro</a>
+									
+								</div>
+								<!-- <br>
+								<br>
+								<button class="btn btn-dark">Seleccionar</button> -->
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/maletin_brocas.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> MALETIN HERRAMIENTAS VARIAS </span><br>
-							<br>
-							<label>$ 25.990</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/panel_estructural.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> OSB ESTRUCTURAL 122x244x9.5mm</span><br>
-							<br>
-							
-							<label>$ 18.190</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/Disco_corte.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> DISCO CORTE FE 4 1/2</span><br>
-							<br>
-							
-							<label>$ 1.010</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="card-group mt-3">
-			<div class="card-body">
-				<div class="card border-dark " style="width: 15rem">
-					<img src="{% static 'app/imgs/Aislapol.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> AISLAPOL 244x125x2.5mm</span><br>
-							<br>
-							
-							<label>$ 5.990</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 			
-	
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/Esmalte_sintetico.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> ESMALTE SINTETICO NEGRO GALON SOQUINA</span><br>
-							<br>
-							
-							<label>$ 16.390</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/generador.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i>GENERADOR MONO GS850D 6.5KVA DIESEL - KOLVOK</span><br>
-							<br>
-							<label>$ 1.489.650</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="card-body">
-				<div class="card border-dark" style="width: 15rem">
-					<img src="{% static 'app/imgs/soldaduras.jpg' %}" class="card-img-top" alt="..." />
-					<div class="card-body container-fluid">
-						<div class="text-center">
-							<span><i class="fas fa-caret-right"></i> SOLDADURA ARCO LINCOLN 6011 1/18</span><br>
-							<br>
-							<label>$ 2.700</label><br><br>
-
-							<button class="btn btn-success">agregar al carro</button>
-							<br>
-							<br>
-							<button class="btn btn-dark">Seleccionar</button>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>	
 </section>
-
-
 
  {% endblock %}
 

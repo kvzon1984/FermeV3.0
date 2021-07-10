@@ -1,0 +1,46 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+
+
+<div class="container w-100 w-md-50 w-lg-50 bg-grey mt-5 rounded shadow mb-4">
+    
+        <div class="col-12 col-md-6 offset-md-3 bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">INGRESAR NUEVO PRODUCTO</h2>
+            <form action="#" method="post" >
+
+                {% csrf_token %}
+
+                {{ form | crispy }}
+          
+                  <!--   <br>
+                    <label for="">select</label>
+                   <select class="form-control" name="" id="">
+                       <option value="">intento</option>
+                       {% for data in agregarProducto %}
+                       <option value="{{ data.cod_producto }}">{{data.descripcion}}</option>
+                       {% endfor %}
+                   </select>  -->
+                <br>
+                <div class="d-grid">
+                    <!-- <a href="{% url 'userPass' %}"><button type="button" class="btn btn-warning">Guardar Datos</button></a> -->
+                    <input type="submit"  class="btn btn-warning" value="Guardar Producto">
+                </div>
+                
+            </form>
+           
+        </div>
+    </div>
+</div>
+
+ {% endblock %}
+
+
+
+

@@ -1,0 +1,49 @@
+{% extends 'app/base.html' %} 
+{% load static %} 
+{% block foto-home %}
+
+{% endblock %}
+
+{% block contenido %}
+
+{% load crispy_forms_tags %}
+{% load humanize %}
+
+
+<div class="container w-100 w-md-90 w-lg-90  mt-5 rounded shadow mb-5">
+    
+        <div class="col-12 col-md-12  bg-white p-5 rounded-end">
+            <h2 class="fw-bold text-center py-5">PROVEEDORES</h2>
+           <table class="table table-responsive table-bordered table-hover cell-border">
+               <tr class="table-danger">
+                    <th class="text-center aliniarElements">Cod Proveedor</th>
+                    <th class="text-center aliniarElements">Rut Proveedor</th>
+                    <th class="text-center aliniarElements">Nombre</th>
+                    <th class="text-center aliniarElements">Celular</th>
+                    <th class="text-center aliniarElements">Opciones</th>
+                </tr>
+               {% for p in proveedores %}
+
+               <tr>
+                   <td class="text-center aliniarElements">{{ p.cod_proveedor | title }}</td>
+                   <td class="text-center aliniarElements">{{ p.run_proveedor | title }}</td>
+                   <td class="text-center aliniarElements">{{ p.nom_proveedor | title }}</td>
+                   <td class="text-center aliniarElements">{{ p.celular_proveedor | title }}</td>
+                   
+                   <td class="text-center aliniarElements">
+                       <a href="{% url 'modificarProveedor' p.cod_proveedor %}" class="btn btn-info btn-sm">Editar</a>
+                   
+                       <a href="{% url 'eliminarProveedor' p.cod_proveedor %}"class="btn btn-danger btn-sm">Eliminar</a>
+                   </td>
+
+               </tr>
+               {% endfor %}
+           </table>
+           
+        </div>
+    </div>
+</div>
+
+
+
+ {% endblock %}
